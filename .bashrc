@@ -1,13 +1,6 @@
 #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
 MonPrompt='${PWD//\/\\\}>'
-alias C:='PS1=$MonPrompt ; echo "C: n existe pas sous linux";'
-alias c:='PS1=$MonPrompt ; echo "C: n existe pas sous linux";'
-alias D:='PS1=$MonPrompt ; echo "D: n existe pas sous linux";'
-alias d:='PS1=$MonPrompt ; echo "D: n existe pas sous linux";'
-
-alias add='echo "sudo add-apt-repository";sudo add-apt-repository '
-alias ppa='echo "sudo add-apt-repository";sudo add-apt-repository '
-alias add-remove='sudo add-apt-repository --remove"; sudo add-apt-repository --remove '
+alias ppa-add='echo "sudo add-apt-repository";sudo add-apt-repository '
 alias ppa-remove='sudo add-apt-repository --remove"; sudo add-apt-repository --remove '
 
 alias reboot='echo "sudo reboot"; sudo reboot'
@@ -20,43 +13,7 @@ alias autoremove='echo "sudo apt-get autoremove --purge"; sudo apt-get autoremov
 
 alias remove='echo "sudo apt-get autoremove --purge"; sudo apt-get autoremove --purge'
 
-alias dir='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► ls -alF (pas de /w sous linux)"; ls -Fal'
-alias ren='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► mv"; mv '
-alias rename='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► mv"; mv '
-alias move='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► mv"; mv '
-alias copy='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► cp"; cp '
-alias xcopy='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► cp -r"; cp -r '
-alias del='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► rm"; rm '
-alias mem='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► free essayez la commande top"; free'
-alias ver='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► uname & lsb_release -a";lsb_release -a; uname -a'
-alias chdir='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► pwd"; pwd'
-alias edit='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► nano"; nano'
-alias md='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► mkdir"; mkdir'
-alias rd='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► rm -r"; rm -r'
-alias deltree='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► rm -r"; rm -r'
-alias attrib='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► chmod"; chmod'
-alias format='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► mformat"; mformat'
-alias type='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► cat"; cat'
-alias chkdsk='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► dosfsck"; dosfsck'
-alias autoexec.bat='echo "*Ceci est une commande MS-DOS* sous linux voir le dossier" $HOME"/.config/autostart et /etc/xdg/autostart";ls $HOME/.config/autostart ; ls /etc/xdg/autostart/'
-alias cls='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► clear"; clear'
-alias quit='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "► exit"; exit'
-alias config.sys='tput setaf 3;echo "► Commande MS-DOS équivalence linux";tput sgr0 ;echo "►  /etc/init.d/"; ls /etc/init.d/'
 alias pause='tput setaf 1;echo "Pressez la touche Entrer pour continuer";tput sgr0;read pause'
-
-alias list='clear; 
-echo "";
-echo "";
-echo "";
-echo "En + de toutes les commandes Linux ubuntu ";
-echo "Ce terminal supporte quelques commandes DOS/MS-DOS";
-echo "";
-echo "dir ren rename move copy xcopy mem chdir edit ver cd md rd del deltree attrib chkdsk cls type quit autoexec.bat ";
-echo " ";
-echo " ";
-echo "ainsi que mc pour ouvrir un équivalant de Norton commander"
-echo " ";'
-
 
 function name()
 {
@@ -101,7 +58,6 @@ TERM=xterm-256color
 
 # UTF-8 for logs
 export LANG="en_US.UTF-8"
-
 
 #[ -f $HOME/partage/bin/zsh ] && exec $HOME/partage/bin/zsh -l
 # Reset
@@ -198,8 +154,8 @@ echo "'$Yellow' "$(git branch | grep ^*|sed s/\*\ //):"'$Green'"✓; \
 else \
   # @5 - Changes to working tree
 echo "'$Yellow' "$(git branch | grep ^*|sed s/\*\ //):"'$IRed'"✗; \
-fi) '$BPurple$PathShort$Color_Off'\$ "; \
+fi) '$BPurple$PathFull$Color_Off'\$ "; \
           else \
             # @2 - Prompt when not in GIT repo
-echo " '$Purple$PathShort$Color_Off'\$ "; \
+echo " '$Purple$PathFull$Color_Off'\$ "; \
 fi)'

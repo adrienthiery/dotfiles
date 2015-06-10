@@ -15,12 +15,15 @@
     st = status
     ci = commit
     co = checkout
+    cob = checkout -b
     pur = pull --rebase
     sth = stash
     sthp = stash pop
     cm = commit -m
     cia = commit --amend
     br = branch
+    brd = branch -D
+    bra = branch -a
     ap = add -p
     fa = fetch --all
     clear = remote prune origin
