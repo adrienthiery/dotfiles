@@ -1,30 +1,30 @@
 [user]
-    name = Adrien Thiery
-    email = adrien.thiery@gmail.com
+  name = Adrien Thiery
+  email = adrien.thiery@gmail.com
 [color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
-    ui = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
 [push]
-    default = current
+  default = current
 [core]
-    excludesfile = /home/ubuntu/.gitignore_global
+	excludesfile = /home/adri/.gitignore_global
 [alias]
-    st = status
-    ci = commit
-    co = checkout
-    cob = checkout -b
-    pur = pull --rebase
-    sth = stash
-    sthp = stash pop
-    cm = commit -m
-    cia = commit --amend
-    br = branch
-    brd = branch -D
-    bra = branch -a
-    ap = add -p
-    fa = fetch --all
-    clear = remote prune origin
+  st = status
+  ci = commit
+  co = checkout
+  cob = checkout -b
+  pur = pull --rebase
+  sth = stash
+  sthp = stash pop
+  cm = commit -m
+  cia = commit --amend
+  br = branch
+  brd = branch -D
+  bra = branch -a
+  ap = add -p
+  fa = fetch --all
+  clear = remote prune origin
 
