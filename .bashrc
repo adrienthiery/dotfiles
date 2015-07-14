@@ -15,6 +15,23 @@ alias remove='echo "sudo apt-get autoremove --purge"; sudo apt-get autoremove --
 
 alias pause='tput setaf 1;echo "Pressez la touche Entrer pour continuer";tput sgr0;read pause'
 
+# Git aliases
+alias g='git'
+alias gst='git status'
+alias gp='git pull'
+alias gap='git add -p'
+alias gsth='git stash'
+alias gsthp='git stash pop'
+alias gph='git push'
+alias gbra='git branch -a'
+alias gbrd='git branch -d'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+
+alias ...='../..'
+alias ....='../../..'
+
 function name()
 {
   grep -i "$1" /etc/passwd | cut -d: -f5 | sort
@@ -145,15 +162,19 @@ Jobs="\j"
 # This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
 # I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
 
+_gitbranch() {
+  git branch | grep ^*| sed s/\*\ // | sed -E 's/(.{10}).{3}.+/\1.../'
+}
+
 export PS1=$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
   if [ $? -eq 0 ]; then \
     echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
     if [ "$?" -eq "0" ]; then \
       # @4 - Clean repository - nothing to commit
-echo "'$Yellow' "$(git branch | grep ^*|sed s/\*\ //):"'$Green'"✓; \
+echo "'$Yellow' "$(_gitbranch):"'$Green'"✓; \
 else \
   # @5 - Changes to working tree
-echo "'$Yellow' "$(git branch | grep ^*|sed s/\*\ //):"'$IRed'"✗; \
+echo "'$Yellow' "$(_gitbranch):"'$IRed'"✗; \
 fi) '$BPurple$PathFull$Color_Off'\$ "; \
           else \
             # @2 - Prompt when not in GIT repo
