@@ -1,7 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/ubuntu/.ssh'
 let g:netrw_dirhist_2='/home/ubuntu/Projets/easyfuture-front/config'
 let g:netrw_dirhist_3='/home/ubuntu/Projets/adwords/src'
 let g:netrw_dirhist_4='/home/ubuntu/tmp'
 let g:netrw_dirhist_5='/home/ubuntu/Projets/sfco2-provisioning'
+let g:netrw_dirhist_6='/home/sophied/gaia/gcdl/mothership/roles/pg-app-database'
+let g:netrw_dirhist_7='/home/sophied/gaia/www/servicestore/releases/20150421153500/logs'
+let g:netrw_dirhist_8='/home/sophied/.dotfiles/atom'

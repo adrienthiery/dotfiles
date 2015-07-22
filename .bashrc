@@ -180,3 +180,7 @@ fi) '$BPurple$PathFull$Color_Off'\$ "; \
             # @2 - Prompt when not in GIT repo
 echo " '$Purple$PathFull$Color_Off'\$ "; \
 fi)'
+
+export EDITOR='vim'
+source /var/lib/gems/1.9.1/gems/tmuxinator-0.6.11/completion/tmuxinator.bash
+
