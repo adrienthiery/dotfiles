@@ -1,1 +1,1 @@
-/home/adrien/.zprezto/runcoms/zprofile
+.zprezto/runcoms/zprofile
