@@ -5,6 +5,8 @@ DEST_DIR=~/
 mkdir -p $BACKUP_DIR
 echo "Backing up actual dotfiles in $BACKUP_DIR"
 
+git submodule init && git submodule update --recursive
+
 myDotfiles=(.*)
 myDotfilesArray=(${myDotfiles// / })
 for element in "${myDotfilesArray[@]}"
