@@ -4,10 +4,13 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+call vundle#rc()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'groenewege/vim-less'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'kchmck/vim-coffee-script'
 syntax enable
 

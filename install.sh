@@ -9,13 +9,14 @@ myDotfiles=(.*)
 myDotfilesArray=(${myDotfiles// / })
 for element in "${myDotfilesArray[@]}"
 do
-  if [ "$element" != ".git" ]; then
+  if [[ "$element" != ".git" && "$element" != ".gitignore" ]]; then
     echo "Backing up $element and replacing it"
     mv ${DEST_DIR}${element} ${BACKUP_DIR}
     cp -R ${element} ${DEST_DIR}
   fi
 done
 
+echo "\nSetting zsh as default terminal"
 chsh -s /bin/zsh
 
 echo "\nRestart your shell now"
