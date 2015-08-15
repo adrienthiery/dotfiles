@@ -12,10 +12,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'kchmck/vim-coffee-script'
-syntax enable
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+syntax enable
 filetype plugin indent on    " required
 
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
