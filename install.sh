@@ -7,7 +7,6 @@ echo "Backing up actual dotfiles in $BACKUP_DIR"
 
 myDotfiles=(.*)
 myDotfilesArray=(${myDotfiles// / })
-echo $myDotfilesArray
 for element in "${myDotfilesArray[@]}"
 do
   if [ "$element" != ".git" ]; then
@@ -17,4 +16,6 @@ do
   fi
 done
 
-echo "Restart your shell now"
+chsh -s /bin/zsh
+
+echo "\nRestart your shell now"

@@ -119,5 +119,3 @@ On_ICyan="\[\033[0;106m\]"    # Cyan
 On_IWhite="\[\033[0;107m\]"   # White
 
 export EDITOR='vim'
-
-zsh
