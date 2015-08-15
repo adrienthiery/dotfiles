@@ -16,7 +16,9 @@ do
   fi
 done
 
-echo "\nSetting zsh as default terminal"
-chsh -s /bin/zsh
+if [ "$SHELL" != "/bin/zsh" ]; then
+  echo "\nSetting zsh as default terminal"
+  chsh -s /bin/zsh
+fi
 
 echo "\nRestart your shell now"
