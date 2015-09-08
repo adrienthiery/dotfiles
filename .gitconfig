@@ -10,7 +10,8 @@
 [push]
   default = current
 [core]
-	excludesfile = /home/adri/.gitignore_global
+  excludesfile = /home/adri/.gitignore_global
+  editor = vim
 [alias]
   st = status
   ci = commit
