@@ -6,6 +6,9 @@ mkdir -p $BACKUP_DIR
 echo "Backing up actual dotfiles in $BACKUP_DIR"
 
 git submodule init && git submodule update --recursive
+cd .zprezto/
+git submodule init && git submodule update --recursive
+cd ../
 
 myDotfiles=(.*)
 myDotfilesArray=(${myDotfiles// / })
@@ -22,5 +25,8 @@ if [ "$SHELL" != "/bin/zsh" ]; then
   echo "\nSetting zsh as default terminal"
   chsh -s /bin/zsh
 fi
+
+echo "Installing Vundle"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo "\nRestart your shell now"
