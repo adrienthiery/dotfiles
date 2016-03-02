@@ -5,6 +5,7 @@ DEST_DIR=~/
 mkdir -p $BACKUP_DIR
 echo "Backing up actual dotfiles in $BACKUP_DIR"
 
+sudo apt-get install zsh vim htop tree git
 git submodule init && git submodule update --recursive
 cd .zprezto/
 git submodule init && git submodule update --recursive
