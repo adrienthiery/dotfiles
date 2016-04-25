@@ -28,3 +28,4 @@ set hls is
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+noremap w!! w !sudo tee > /dev/null %
