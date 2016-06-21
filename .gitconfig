@@ -12,6 +12,7 @@
 [core]
   excludesfile = /home/adri/.gitignore_global
   editor = vim
+  ignorecase = false
 [alias]
   st = status
   ci = commit
@@ -19,7 +20,8 @@
   cob = checkout -b
   pur = pull --rebase
   sth = stash
-  sthp = stash pop
+  sthp = stash apply
+  stha = stash apply
   cm = commit -m
   cia = commit --amend
   br = branch
