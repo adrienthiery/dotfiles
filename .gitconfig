@@ -9,8 +9,10 @@
   ui = auto
 [push]
   default = current
+[branch]
+    autoSetupMerge = true
 [core]
-  excludesfile = /home/adri/.gitignore_global
+  excludesfile = ~/.gitignore
   editor = vim
   ignorecase = false
 [alias]
