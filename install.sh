@@ -7,6 +7,8 @@ echo "Backing up actual dotfiles in $BACKUP_DIR"
 
 sudo apt-get install zsh vim htop tree git
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone git@github.com:powerline/fonts.git ~/.dotfiles/fonts && cd ~/.dotfiles/fonts && ./install.sh && cd  -
 
 myDotfiles=(.*)
 myDotfilesArray=(${myDotfiles// / })
