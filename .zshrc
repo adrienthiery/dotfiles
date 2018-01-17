@@ -3,16 +3,18 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/osedea/.oh-my-zsh
+export EDITOR=vim
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs virtualenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY='truncate_middle'
 POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -107,32 +109,75 @@ alias remove='echo "sudo apt-get autoremove --purge"; sudo apt-get autoremove --
 alias g='git'
 alias gsp='git stash && git pull --rebase && git stash pop'
 alias gst='git status'
-alias gp='git pull'
+alias gp='git pull --rebase'
 alias gap='git add -p'
 alias gsth='git stash'
 alias gsthp='git stash pop'
 alias gph='git push'
+alias gphf='git phf'
 alias gbra='git branch -a'
 alias gbrd='git branch -d'
 alias gcm='git commit -m'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gclear='echo "Clearing remote branches refs"; git clear; echo "Clearing local branches"; git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
+alias gbt='git branch -l | grep'
 
 source ~/.bashrc
+
+# Perso
+alias nalyze='cd ~/Perso/Nalyze && ssh-add ~/.ssh/bitbucket-nalyze_rsa'
+
+# Moving files
+moveAndroidAsset() {
+    SOURCEFOLDER=$1;
+    DESTFOLDER=$2;
+    ICON=$3;
+    if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+        echo '1st Arg should be SOURCEFOLDER, 2nd should be DESTFOLDER and 3rd should be ICON';
+        return 1;
+    fi
+    ANDROIDSIZES=[
+        'ldpi',
+        'mdpi',
+        'hdpi',
+        'xhdpi',
+        'xxhdpi',
+        'xxxhdpi',
+    ];
+    for SIZE in $ANDROIDSIZES; do
+        SOURCEFILE="$SOURCEFOLDER/Android/$SIZE/$ICON.png"
+        DESTFILE="$DESTFOLDER/drawable-$SIZE/$ICON.png"
+        echo "Copying $SOURCEFILE to $DESTFILE";
+        cp $SOURCEFILE $DESTFILE;
+    done;
+
+    return 0;
+}
 
 # MacOS
 alias mysqlstart='sudo launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist'
 alias mysqlstop='sudo launchctl unload -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist'
 
 # Osedea projects
-alias wim='cd ~/Projects/WIM/women-in-mind-front-end && atom . ~/Projects/WIM/women-in-mind-backend ~/Projects/WIM/chat-backend ~/Projects/WIM/wim-cookbooks'
+alias wim='cd ~/Projects/WIM/women-in-mind-front-end && atom . ~/Projects/WIM/women-in-mind-backend ~/Projects/WIM/women-in-mind-chat ~/Projects/WIM/wim-cookbooks'
 alias wimbackend='cd ~/Projects/WIM/women-in-mind-backend'
-alias wimchat='cd ~/Projects/WIM/chat-backend'
-alias heyneighburz='cd ~/Projects/Hey\ Neighburz/ && atom hey-neighburz-app/ hey-neighburz-backend/ hey-neighburz-chat/ && cd hey-neighburz-app/'
-alias heyneighburzbackend='cd ~/Projects/Hey\ Neighburz/hey-neighburz-backend/'
-alias heyneighburzchat='cd ~/Projects/Hey\ Neighburz/hey-neighburz-chat/'
-alias starter='cd ~/Projects/react-native-starter && atom . ../Components/ ../lucy_5.2'
+alias wimchat='cd ~/Projects/WIM/women-in-mind-chat'
+alias heyneighburz='cd ~/Projects/RealMindr/Hey\ Neighburz/hey-neighburz-app/ && atom . ../hey-neighburz-backend/ ../hey-neighburz-chat/'
+alias heyneighburzbackend='cd ~/Projects/RealMindr/Hey\ Neighburz/hey-neighburz-backend/'
+alias heyneighburzchat='cd ~/Projects/RealMindr/Hey\ Neighburz/hey-neighburz-chat/'
+alias starter='cd ~/Projects/OSEDEA/starters/react-native-starter && atom . ../../Components/ ../lucy'
+alias aidi='cd ~/Projects/Aidi/aidi-commerciale && atom . ../aidi-sobeys/'
+alias sobeys='cd ~/Projects/Aidi/aidi-sobeys && atom . ../aidi-commerciale/'
+alias recyc='cd ~/Projects/RecycQuebec/recyc-quebec_mobile-app && atom . ~/Projects/RecycQuebec/recyc-quebec_backend ~/Projects/RecycQuebec/recyc-quebec_ansible-deploy'
+alias recycBackend='cd ~/Projects/RecycQuebec/recyc-quebec_backend'
+alias robic='cd ~/Projects/Robic/ && atom .'
+alias tva='cd ~/Projects/TVA/tva-sports_app-mobile/ && atom . ../tvasports-proto'
+alias tvaproto='cd ~/Projects/TVA/tvasports-proto'
+alias opensource='cd ~/Projects/OpenSource && atom .'
+alias dbg='adb shell input keyevent 82'
+alias mbam='cd ~/Projects/MBAM/mbam_mobile/ && atom .'
+alias deac='cd ~/Projects/MBAM/mbam_deac-mobile/ && atom . ../mbam_deac-admin ../mbam_deac-env'
 
 # Docker
 alias docker-clean='docker stop $(docker ps -qa) && docker rm $(docker ps -qa)'
@@ -142,3 +187,28 @@ function homestead() {
     ( cd ~/Homestead && vagrant $* )
 }
 
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+alias lock='sudo chflags schg'
+alias unlock='sudo chflags noschg'
+
+export NVM_DIR="/Users/osedea/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export ANSIBLE_CONFIG="vault_password_file=~/.bin/ansible-vault-pass"
+
+function light() {
+  if [ -z "$2" ]
+    then src="pbpaste"
+  else
+    src="cat $2"
+  fi
+  $src | highlight -O rtf --syntax $1 --font Inconsolata --style zenburn | pbcopy
+}
+
+rm -rf /private/tmp/flow/
+
+export PATH=~/Library/Android/sdk/platform-tools/:$PATH
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+export ANDROID_SDK_ROOT="~/Library/Android/sdk"

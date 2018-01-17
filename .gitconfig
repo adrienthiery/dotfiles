@@ -1,6 +1,6 @@
 [user]
   name = Adrien Thiery
-  email = adrien.thiery@gmail.com
+  email = adrien.thiery@osedea.com
 [color]
   branch = auto
   diff = auto
@@ -32,4 +32,7 @@
   ap = add -p
   fa = fetch --all
   clear = remote prune origin
+  phf = push --force-with-lease
 
+[init]
+	templatedir = ~/.git-templates
